@@ -1,4 +1,4 @@
-resource "aws_db_subnet_group" "database" {
+resource "aws_db_subnet_group" "group" {
   name       = "database_subnet"
   subnet_ids = ["${aws_subnet.private.*.id}"]
 
@@ -8,5 +8,5 @@ resource "aws_db_subnet_group" "database" {
 }
 
 output "db_subnet_group" {
-  value = "${aws_db_subnet_group.database.name}"
+  value = "${aws_db_subnet_group.group.*.name}"
 }
