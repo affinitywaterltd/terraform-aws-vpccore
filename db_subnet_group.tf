@@ -11,3 +11,4 @@ resource "aws_db_subnet_group" "group" {
 output "db_subnet_name" {
   value = "${aws_db_subnet_group.group.*.name}"
 }
+
