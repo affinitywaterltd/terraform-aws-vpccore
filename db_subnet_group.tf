@@ -3,7 +3,8 @@ resource "aws_db_subnet_group" "group" {
   subnet_ids = ["${aws_subnet.private.*.id}"]
 
   tags {
-    Name = "DB Subnet Group"
+    Name        = "DB Subnet Group"
+    Description = "All private instances for RDS placement"
   }
 }
 
