@@ -1,5 +1,5 @@
 resource "aws_db_subnet_group" "group" {
-  name        = "database_subnet_${var.Environment}"
+  name        = "database_subnet_${var.name}"
   subnet_ids  = ["${aws_subnet.private.*.id}"]
   description = "All private instances for RDS placement"
 
