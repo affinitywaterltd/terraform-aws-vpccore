@@ -56,7 +56,7 @@ resource "aws_vpc_dhcp_options_association" "this" {
   count = "${var.create_vpc && var.enable_dhcp_options ? 1 : 0}"
 
   vpc_id          = "${aws_vpc.this.id}"
-  dhcp_options_id = "${aws_vpc_dhcp_options.default.id}"
+  dhcp_options_id = "${aws_vpc_dhcp_options.this.id}"
 }
 
 ###################
