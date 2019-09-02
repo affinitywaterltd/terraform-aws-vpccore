@@ -33,7 +33,11 @@ resource "aws_vpc_dhcp_options" "this" {
   netbios_name_servers = ["10.31.103.254", "10.31.107.254", "10.31.111.254"]
   netbios_node_type    = "${var.dhcp_options_netbios_node_type}"
 
+
   tags = "${merge(map("Name", format("%s", var.name)), var.dhcp_options_tags, var.tags)}"
+   lifecycle {
+    ignore_changes = ["netbios_name_servers", "domain_name_servers", "ntp_servers"]
+  }
 }
 
 resource "aws_vpc_dhcp_options" "default" {
