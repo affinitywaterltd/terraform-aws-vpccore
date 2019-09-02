@@ -28,6 +28,18 @@ resource "aws_vpc_dhcp_options" "this" {
   count = "${var.create_vpc && var.enable_dhcp_options ? 1 : 0}"
 
   domain_name          = "${var.dhcp_options_domain_name}"
+  domain_name_servers  = ["10.31.103.254", "10.31.107.254", "10.31.111.254"]
+  ntp_servers          = ["10.31.103.254", "10.31.107.254", "10.31.111.254"]
+  netbios_name_servers = ["10.31.103.254", "10.31.107.254", "10.31.111.254"]
+  netbios_node_type    = "${var.dhcp_options_netbios_node_type}"
+
+  tags = "${merge(map("Name", format("%s", var.name)), var.dhcp_options_tags, var.tags)}"
+}
+
+resource "aws_vpc_dhcp_options" "this" {
+  count = "${var.create_vpc && var.enable_dhcp_options ? 1 : 0}"
+
+  domain_name          = "${var.dhcp_options_domain_name}"
   domain_name_servers  = ["${var.dhcp_options_domain_name_servers}"]
   ntp_servers          = ["${var.dhcp_options_ntp_servers}"]
   netbios_name_servers = ["${var.dhcp_options_netbios_name_servers}"]
@@ -35,6 +47,7 @@ resource "aws_vpc_dhcp_options" "this" {
 
   tags = "${merge(map("Name", format("%s", var.name)), var.dhcp_options_tags, var.tags)}"
 }
+
 
 ###############################
 # DHCP Options Set Association
