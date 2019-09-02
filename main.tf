@@ -36,7 +36,7 @@ resource "aws_vpc_dhcp_options" "this" {
   tags = "${merge(map("Name", format("%s", var.name)), var.dhcp_options_tags, var.tags)}"
 }
 
-resource "aws_vpc_dhcp_options" "this" {
+resource "aws_vpc_dhcp_options" "default" {
   count = "${var.create_vpc && var.enable_dhcp_options ? 1 : 0}"
 
   domain_name          = "${var.dhcp_options_domain_name}"
