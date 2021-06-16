@@ -1,4 +1,3 @@
-/*
 resource "aws_cloudwatch_log_group" "yada" {
   name = "Yada"
 
@@ -7,7 +6,6 @@ resource "aws_cloudwatch_log_group" "yada" {
     Application = "serviceA"
   }
 }
-*/
 
 locals {
   max_subnet_length = max(
