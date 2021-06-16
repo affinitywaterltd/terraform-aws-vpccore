@@ -1,12 +1,3 @@
-resource "aws_cloudwatch_log_group" "yada" {
-  name = "Yada"
-
-  tags = {
-    Environment = "production"
-    Application = "serviceA"
-  }
-}
-
 locals {
   max_subnet_length = max(
     length(var.private_subnets),
